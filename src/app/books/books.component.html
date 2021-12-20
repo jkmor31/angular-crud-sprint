@@ -1,0 +1,29 @@
+<h1>Books API</h1>
+<div id="container">
+
+    <table *ngFor="let book of books">
+        <th>{{book.id}} - {{book.title}}</th>
+        <tr>
+            <th>{{book.subtitle}}</th>
+        </tr>
+        <tr>${{book.price}}</tr>
+        <tr>{{book.author}}</tr>
+        <tr>Pages: {{book.pages}}</tr>
+        <tr>{{book.description}}</tr>
+        <tr><button (click)="deleteBook(book.id)">Delete</button>
+            <button (click)="changeBook()">Update</button></tr>
+    </table>
+</div>
+<div id="newBook">
+    <label>Title: </label>
+    <input [(ngModel)]="bookData.title" />
+
+    <label>Author: </label><input [(ngModel)]="bookData.author" />
+    <label>Pages: </label><input [(ngModel)]="bookData.pages" />
+    <label>Price: </label><input [(ngModel)]="bookData.price" />
+    <label>Description: </label><input [(ngModel)]="bookData.description" />
+    <button (click)="addBook()">Add Book</button></div>
+<div>
+    <label>ID: </label>
+    <input [(ngModel)]="bookData.id" />
+</div>

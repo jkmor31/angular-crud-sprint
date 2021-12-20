@@ -1,0 +1,17 @@
+<h1>Movies API</h1>
+
+<div id="container">
+    <table *ngFor="let movie of movies">
+        <th>{{movie.Title}}</th>
+        <tr>Year: {{movie.Year}}</tr>
+        <tr>Country: {{movie.Country}}</tr>
+        <tr>Director: {{movie.Director}}</tr>
+        <tr>
+            <td>IMDB Rating: {{movie.imdbRating}}</td>
+        </tr>
+        <tr id="Plot">
+            <td>{{movie.Plot}}</td>
+        </tr>
+        <tr><img src={{movie.Poster}} alt=""></tr>
+    </table>
+</div>
