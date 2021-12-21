@@ -10,6 +10,10 @@ import { Book } from './books.model';
 export class BooksComponent implements OnInit {
   books: Book[] = [];
   bookData: Book = {id: 0,  title: '', subtitle: '', author: '', pages: 0, price: 0, description: '' };
+  updatedBook: Book = {id: 0,  title: '', subtitle: '', author: '', pages: 0, price: 0, description: '' };
+  array = [];
+  keys: string[] = [];
+
 
   constructor(private bookService: BookService) { }
 
@@ -32,9 +36,16 @@ export class BooksComponent implements OnInit {
     });
     this.getBooks();
   }
-  changeBook(){
-    this.bookService.updateBook(this.bookData).subscribe(payload =>{
+  update(id: number){
+    this.bookService.getBook(id).subscribe(payload =>{
+      this.array = Object.values(payload);
+      this.keys = Object.keys(payload);});
+  }
+  
+  changeBook(data: any){
+    this.bookService.updateBook(data).subscribe(payload =>{
       console.log(payload);
     });
+    this.getBooks();
   }
 }

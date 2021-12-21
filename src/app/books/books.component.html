@@ -11,10 +11,12 @@
         <tr>Pages: {{book.pages}}</tr>
         <tr>{{book.description}}</tr>
         <tr><button (click)="deleteBook(book.id)">Delete</button>
-            <button (click)="changeBook()">Update</button></tr>
+            <button (click)="update(book.id)">Update</button></tr>
     </table>
 </div>
+
 <div id="newBook">
+    <h2>Add a Book</h2>
     <label>Title: </label>
     <input [(ngModel)]="bookData.title" />
 
@@ -23,7 +25,15 @@
     <label>Price: </label><input [(ngModel)]="bookData.price" />
     <label>Description: </label><input [(ngModel)]="bookData.description" />
     <button (click)="addBook()">Add Book</button></div>
-<div>
-    <label>ID: </label>
-    <input [(ngModel)]="bookData.id" />
+
+<div id="updateBook">
+    <h2>Update Book</h2>
+    <div *ngFor="let item of array; let index = index;">
+        <p>{{keys[index]}}- {{item}}</p>
+    </div>
+    <form #updateForm="ngForm" (ngSubmit)="changeBook(updateForm.value)">
+        <label>Title: </label>
+        <input name="title" ngModel />
+        <button type="submit">Update</button>
+    </form>
 </div>

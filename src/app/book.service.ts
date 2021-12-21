@@ -14,19 +14,19 @@ export class BookService {
    }
 
   getBooks(): Observable<any> {
-    return this.http.get(this.url);
+    return this.http.get<any>(this.url);
   }
-  getBook(id: number) {
-  return this.http.get(this.url + '/' + id);
+  getBook(id: number): Observable<any> {
+  return this.http.get<any>(this.url + '/' + id);
   }
 
-  deleteBooks(id: number) {
-    return this.http.delete(this.url + '/' + id);
+  deleteBooks(id: number): Observable<any> {
+    return this.http.delete<any>(this.url + '/' + id);
   }
-  createBook(bookData: Object) {
-    return this.http.post(this.url, bookData);
+  createBook(bookData: Object): Observable<Book>{
+    return this.http.post<Book>(this.url, bookData);
   }
-  updateBook(bookData: Object) {
-    return this.http.put(this.url, bookData);
+  updateBook(data: any): Observable<any> {
+    return this.http.put<any>(this.url, data);
   }
 }
